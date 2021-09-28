@@ -41,13 +41,15 @@ c.successors[g] = 5
 def depth_first_search(initial_node, target_node):
     frontier = [initial_node]
     path = []
+    expanded_nodes = []
 
     while len(frontier) > 0:
         node = frontier.pop()
         path.append(node)
+        expanded_nodes.append(node)
 
         if node is target_node:
-            return path
+            return (path, expanded_nodes)
 
         # Using https://linuxize.com/post/python-list-reverse/
         # Push the "right-most" successor onto the frontier stack first, so that
@@ -61,11 +63,18 @@ def depth_first_search(initial_node, target_node):
     return None
 
 # Simple test cases
-assert depth_first_search(s, s) == [s]
-assert depth_first_search(s, g) == [s, a, g]
+assert depth_first_search(s, s) == ([s], [s])
+assert depth_first_search(s, g) == ([s, a, g], [s, a, d, e, g])
 assert depth_first_search(s, Node('Z')) == None
 
-solution_path = depth_first_search(s, g)
+(solution_path, expanded_nodes) = depth_first_search(s, g)
 
+print('Solution path:')
 for node in solution_path:
+    print(node)
+
+print()
+
+print('Expanded nodes:')
+for node in expanded_nodes:
     print(node)
