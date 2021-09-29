@@ -1,3 +1,6 @@
+# Team members: Christopher Chang, Jaewon Park
+# We chose depth-first search.
+
 # Can use deque for queue
 
 # Using https://www.geeksforgeeks.org/deque-in-python/
